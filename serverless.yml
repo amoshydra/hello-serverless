@@ -11,7 +11,7 @@
 #
 # Happy Coding!
 
-service: hello-serverless # NOTE: update this with your service name
+service: ${env:STACK_NAME} # NOTE: update this with your service name
 #app: your-app-name
 #tenant: your-tenant-name
 
@@ -22,6 +22,8 @@ service: hello-serverless # NOTE: update this with your service name
 provider:
   name: aws
   runtime: nodejs10.x
+  stage: ${env:SERVERLESS_STAGE}
+  region: ap-southeast-1
 
 # you can overwrite defaults here
 #  stage: dev
