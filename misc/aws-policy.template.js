@@ -41,7 +41,7 @@ const output = (([
         's3:PutEncryptionConfiguration',
         's3:PutObject'
       ],
-      Resource: `arn:aws:s3:::${serverlessServiceName}-${serverlessStage}-serverlessdeploymentbucket*`
+      Resource: `arn:aws:s3:::${ `${serverlessServiceName}-${serverlessStage}`.substring(0, 22) }-serverlessdeploymentbucket*`
     },
     {
       Effect: 'Allow',

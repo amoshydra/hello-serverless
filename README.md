@@ -18,7 +18,7 @@ A minimum template for an AWS Lambda deployment with Serverless Framework
 
 ## Notes
 - An example of IAM policy can be generated via `yarn print:aws-policy`. You may attach this policy to the user/group that run the Serverless commands.
-- At the moment, the total length of "service name" + "stage" cannot exceed 23 characters. Otherwise, the generated bucket name may not match the S3 resource defined in the generated policy.
+- At the moment, the total length of "service name" + "stage" should not exceed 22 characters. Otherwise, the generated bucket name may not match the S3 resource defined in the generated policy.
 
 
 ## License
