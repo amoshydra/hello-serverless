@@ -5,7 +5,8 @@ A minimum template for an AWS Lambda deployment with Serverless Framework
 
 1. Clone repository
 2. Create a `.env` file based on the sample `.env.sample`
-   - This example uses AWS Access ID and Access Key. You may also use a different authentication method [ref: [serverless/credentials](https://serverless.com/framework/docs/providers/aws/guide/credentials/)]
+   - This example uses AWS Access ID and Access Key.  
+     You may also use a different authentication method, see: [serverless/credentials](https://serverless.com/framework/docs/providers/aws/guide/credentials/).
    - Populate the rest of the variable in the `.env` file. These variables will be used inside the `serverless.yml` file.
 3. Run `yarn`
 
