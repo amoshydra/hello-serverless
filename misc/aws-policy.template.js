@@ -1,6 +1,6 @@
 const output = (([
-  awsAccountId = process.env.AWS_USER_ID || '<awsAccountId>',
-  stackName = process.env.STACK_NAME || '<stackName>',
+  awsAccountId = process.env.AWS_ACCOUNT_ID || '<awsAccountId>',
+  serverlessServiceName = process.env.SERVERLESS_SERVICE_NAME || '<serverlessServiceName>',
   serverlessStage = process.env.SERVERLESS_STAGE || '<serverlessStage>'
 ]) => ({
   Version: '2012-10-17',
@@ -13,7 +13,7 @@ const output = (([
         'logs:GetLogEvents'
       ],
       Effect: 'Allow',
-      Resource: `arn:aws:logs:*:${awsAccountId}:log-group:/aws/lambda/${stackName}-${serverlessStage}*`
+      Resource: `arn:aws:logs:*:${awsAccountId}:log-group:/aws/lambda/${serverlessServiceName}-${serverlessStage}*`
     },
     {
       Action: [
@@ -41,7 +41,7 @@ const output = (([
         's3:PutEncryptionConfiguration',
         's3:PutObject'
       ],
-      Resource: `arn:aws:s3:::${stackName}-${serverlessStage}-serverlessdeploymentbucket*`
+      Resource: `arn:aws:s3:::${serverlessServiceName}-${serverlessStage}-serverlessdeploymentbucket*`
     },
     {
       Effect: 'Allow',
@@ -62,8 +62,8 @@ const output = (([
         'cloudformation:UpdateTerminationProtection'
       ],
       Resource: [
-        `arn:aws:cloudformation:*:${awsAccountId}:changeset/${stackName}-${serverlessStage}/*`,
-        `arn:aws:cloudformation:*:${awsAccountId}:stack/${stackName}-${serverlessStage}/*`
+        `arn:aws:cloudformation:*:${awsAccountId}:changeset/${serverlessServiceName}-${serverlessStage}/*`,
+        `arn:aws:cloudformation:*:${awsAccountId}:stack/${serverlessServiceName}-${serverlessStage}/*`
       ]
     },
     {
@@ -83,7 +83,7 @@ const output = (([
         'iam:PassRole',
         'iam:PutRolePolicy'
       ],
-      Resource: `arn:aws:iam::${awsAccountId}:role/${stackName}-${serverlessStage}*`
+      Resource: `arn:aws:iam::${awsAccountId}:role/${serverlessServiceName}-${serverlessStage}*`
     },
     {
       Effect: 'Allow',
@@ -91,8 +91,8 @@ const output = (([
         'lambda:*'
       ],
       Resource: [
-        `arn:aws:lambda:*:${awsAccountId}:function:${stackName}-${serverlessStage}*`,
-        `arn:aws:lambda:*:${awsAccountId}:layer:${stackName}-${serverlessStage}*`
+        `arn:aws:lambda:*:${awsAccountId}:function:${serverlessServiceName}-${serverlessStage}*`,
+        `arn:aws:lambda:*:${awsAccountId}:layer:${serverlessServiceName}-${serverlessStage}*`
       ]
     },
     {

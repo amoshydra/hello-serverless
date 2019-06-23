@@ -1,14 +1,12 @@
 {
   "scripts": {
-    "deploy": "serverless deploy --stage dev --region ap-southeast-1",
-    "package": "serverless package --stage dev --region ap-southeast-1",
-    "teardown": "serverless remove --stage dev --region ap-southeast-1",
-    "deploy:production": "serverless deploy --stage prod --region ap-southeast-1",
-    "package:production": "serverless package --stage prod --region ap-southeast-1",
-    "teardown:production": "serverless remove --stage prod --region ap-southeast-1",
-    "print:aws-policy": "node ./misc/aws-policy.template.js"
+    "deploy": "dotenv -- ./node_modules/.bin/serverless deploy",
+    "package": "dotenv -- ./node_modules/.bin/serverless package",
+    "teardown": "dotenv -- ./node_modules/.bin/serverless remove",
+    "print:aws-policy": "dotenv -- node ./misc/aws-policy.template.js"
   },
   "devDependencies": {
+    "dotenv-cli": "^2.0.0",
     "serverless": "^1.45.1"
   }
 }
