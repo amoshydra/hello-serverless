@@ -17,7 +17,8 @@ const output = (([
     },
     {
       Action: [
-        'logs:DescribeLogGroups'
+        'logs:DescribeLogGroups',
+        'logs:DescribeLogStreams'
       ],
       Effect: 'Allow',
       Resource: `arn:aws:logs:*:${awsAccountId}:log-group:*`
